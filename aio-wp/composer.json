@@ -16,5 +16,7 @@
       "helpers/admin-helper.php"
     ]
   },
-  "require": {}
+  "require": {
+    "ext-gd": "*"
+  }
 }
