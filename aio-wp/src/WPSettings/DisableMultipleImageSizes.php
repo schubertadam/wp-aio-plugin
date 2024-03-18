@@ -20,8 +20,12 @@ class DisableMultipleImageSizes implements RegisterInterface {
 
 		add_filter( 'big_image_size_threshold', '__return_false' );
 
-		add_filter( 'intermediate_image_sizes_advanced', '__return_empty_array' );
+		add_filter( 'intermediate_image_sizes_advanced', function ( array $sizes ) {
+			return [ 'full' => __( 'Full Size' ) ];
+		} );
 
-		add_filter( 'image_size_names_choose', '__return_empty_array' );
+		add_filter( 'image_size_names_choose', function ( array $sizes ) {
+			return [ 'full' => __( 'Full Size' ) ];
+		} );
 	}
 }
