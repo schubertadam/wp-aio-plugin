@@ -1,0 +1,20 @@
+{
+  "name": "schubertadam/aio-wp",
+  "description": "A plugin that helps developers to extend the WordPress functionality and use JS frontend",
+  "authors": [
+    {
+      "name": "Adam Schubert",
+      "email": "adamschubert98@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Src\\": "./src"
+    },
+    "files": [
+      "helpers/class-helper.php",
+      "helpers/admin-helper.php"
+    ]
+  },
+  "require": {}
+}
