@@ -20,6 +20,7 @@ services:
     volumes:
       - ./:/var/www/html
       - ./aio-wp:/var/www/html/wp-content/plugins/aio-wp
+      - ./php.ini:/usr/local/etc/php/conf.d/php.ini
     restart: always
     ports:
       - '8000:80'
