@@ -1,0 +1,9 @@
+# Exclude all files
+/*
+
+# Remove files from exclusion
+!README.md
+!.gitignore
+!docker-compose.yml
+!aio-wp
+aio-wp/vendor
