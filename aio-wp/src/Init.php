@@ -2,6 +2,8 @@
 
 namespace Src;
 
+use Src\Core\Loader;
+
 class Init {
 	/**
 	 * Loop through the classes and initialize them
@@ -19,6 +21,8 @@ class Init {
 	 * @return array
 	 */
 	private function get_services(): array {
-		return [];
+		return [
+			Loader::class
+		];
 	}
 }
