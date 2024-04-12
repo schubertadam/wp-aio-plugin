@@ -14,31 +14,31 @@ class ConvertImagesToWebp implements RegisterInterface {
 	];
 
 	public function register(): void {
-		add_filter( 'wp_handle_upload', function ( array $file ) {
-			if ( function_exists( 'imagewebp' ) ) {
+		add_filter('wp_handle_upload', function (array $file) {
+			if (function_exists('imagewebp')) {
 				$file = $file['file'];
-				$extension = strtolower( pathinfo( $file )['extension'] );
+				$extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
 
 				// Only convert if the file is an image
-				if ( in_array( $extension, $this->supportedFileTypes ) ) {
-					$image = imagecreatefromstring( file_get_contents( $file ) );
-					$image_webp_name = str_replace( $extension, 'webp', $file);
+				if (in_array($extension, $this->supportedFileTypes)) {
+					$image = imagecreatefromstring(file_get_contents($file));
+					$imageWebpName = str_replace($extension, 'webp', $file);
 
-					if ( ! imagewebp( $image, $image_webp_name, $this->quality ) ) {
+					if (!imagewebp($image, $imageWebpName, $this->quality)) {
 						return [
 							'error' => "Failed to convert the image to WebP format."
 						];
 					}
 
 					// Clean up the GD image resources
-					imagedestroy( $image );
+					imagedestroy($image);
 
 					// Delete the original image
-					unlink( $file );
+					unlink($file);
 
 					// Update the file array with the WebP file path and MIME type
 					return [
-						'file' => $image_webp_name,
+						'file' => $imageWebpName,
 						'type' => 'image/webp',
 						'ext' => 'webp',
 					];
@@ -46,6 +46,6 @@ class ConvertImagesToWebp implements RegisterInterface {
 			}
 
 			return $file;
-		} );
+		});
 	}
 }
